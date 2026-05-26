@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+networkx
+matplotlib
+pydantic
+python-multipart
+ollama
+GitPython
