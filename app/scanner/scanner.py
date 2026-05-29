@@ -3,7 +3,7 @@ import os
 COBOL_EXTENSIONS = (".cbl", ".cob", ".cobol")
 COPYBOOK_EXTENSIONS = (".cpy",)
 JCL_EXTENSIONS = (".jcl",)
-
+PROC_EXTENSIONS = (".prc", ".proc")
 
 def scan_repository(repo_path):
     files = []
@@ -28,6 +28,11 @@ def scan_repository(repo_path):
                 files.append({
                     "type": "jcl",
                     "path": path
+                })
+            elif filename.lower().endswith(PROC_EXTENSIONS):
+                files.append({
+                "type": "proc",
+                "path": path
                 })
 
     return files

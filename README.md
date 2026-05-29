@@ -374,4 +374,4 @@ Conclusion
 
 This project demonstrates an enterprise-aligned approach for AI-assisted mainframe comprehension and dependency analysis.
 
-The system helps organizations understand legacy COBOL applications using metadata-driven AI summarization and dependency extraction techniques, supporting modernization and migration assessment initiatives.
+The system helps organizations understand legacy COBOL applications using metadata-driven AI summarization and dependency extraction techniques, supporting modernization and migration assessment initiatives.-
