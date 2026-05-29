@@ -25,7 +25,7 @@ def parse_proc(file_path):
         else "UNKNOWN"
     )
 
-    # EXEC PGM
+    # EXEC PGM steps
     exec_matches = re.findall(
         r"//([A-Z0-9#@$]+)\s+EXEC\s+PGM=([A-Z0-9#@$-]+)",
         code,

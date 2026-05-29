@@ -85,6 +85,7 @@ Return a professional enterprise-style technical comprehension report.
         ]
     )
 
+
     return (
         response["message"]["content"]
         .replace("\\t", " ")

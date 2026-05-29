@@ -1,3 +1,5 @@
+from multiprocessing import context
+
 from fastapi import FastAPI, HTTPException
 
 from app.scanner.scanner import scan_repository
@@ -41,8 +43,16 @@ def retrieve_related_context(program_name, parsed_results):
                 item.get("type") == "cobol"
                 and item.get("program") == program
             ):
-
                 related_context.append(item)
+                
+                for copybook in item.get("copybooks", []):
+                    for cp in parsed_results:
+                        if (
+                          cp.get("type") == "copybook"
+                         and cp.get("copybook_name") == copybook
+                  ):
+                            related_context.append(cp)
+
 
                 # Traverse called programs
                 for called in item.get("calls", []):
@@ -205,6 +215,10 @@ def analyze_program(program_name: str):
             parsed_results.append(
                 parse_copybook(file["path"])
             )
+        elif file["type"] == "proc":
+            parsed_results.append(
+                parse_proc(file["path"])
+            )
 
         elif file["type"] == "jcl":
 
@@ -217,6 +231,13 @@ def analyze_program(program_name: str):
     program_name.upper(),
     parsed_results
     )
+
+    print("\n===== CONTEXT TYPES =====")
+
+    for item in context:
+        print(item.get("type"))
+
+    print("=========================\n")
 
     snippet_context = []
     for file in files: 
